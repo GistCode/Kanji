@@ -1,0 +1,5 @@
+{
+  "name": "Daily Kanji",
+  "app_id": "",
+  "watchPatterns": ["www/**/*", "!www/lib/**/*","!www/css/svg/*"]
+}
