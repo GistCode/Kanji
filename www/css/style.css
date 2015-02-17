@@ -1,8 +1,8 @@
 .card-control > ul{
     z-index: 999;
     position: absolute;
-    top:2px;
-    right:0px;
+    top:5px;
+    right:-1px;
     /*margin-top:13px;*/
 
 }
@@ -10,6 +10,12 @@
 .card-control > ul > li{
     min-width: 64px;
     width: 64px;
+}
+
+.card-kanji{
+    font-size: 20em;
+    display: block;
+    text-align: center;
 }
 
 .nav {
@@ -28,7 +34,7 @@
     /*padding: 0px;*/
     font-size: 32px;
     /*width: 54px;*/
-    width: 54px;
+    width: 64px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
