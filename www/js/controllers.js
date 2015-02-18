@@ -21,45 +21,74 @@ angular.module('starter.controllers', [])
                 "content": "Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid."
             }
         ];
-        $scope.tabs.activeTab = 3;
+        $scope.tabs.activeTab = 2;
 
-        var dmak = new Dmak('タ',
+        $scope.startDraw = function(char,elem){
+            console.log(char,elem);
 
-            {
-                uri: "css/svg/",
-                'autoplay': true,
-                'height':309,
-                'width':309,
-                'grid': {
-                    'show': false
-                },
-                'stroke': {
-                    'order': {
-                        'visible': true,
+            new Dmak(char,
+
+                {
+                    uri: "css/svg/",
+                    'autoplay': true,
+                    'height':300,
+                    'width':300,
+                    'grid': {
+                        'show': true
+                    },
+                    'stroke': {
                         'attr':{
-                            'font-size':14
+                            'stroke-linecap':"square"
+                        },
+                        'order': {
+                            'visible': true,
+                            'attr':{
+                                'font-size':14,
+
+                            }
                         }
                     },
-                    'attr': {
-                        'stroke': "random"
-                    }
-                },
-                'element': "draw"
+                    'element': "draw-"+char
 
-            }
-        );
+                }
+            );
 
-        $scope.dmak = dmak;
+
+
+        }
+
+
+
+        //$scope.dmak = $scope.startDraw();
 
         $scope.clear = function(dmak){
 
             console.log(dmak);
-             //= false;
-
             dmak.erase();
-
-            //dmak.erase();
         }
+
+        $scope.eraseLastStrokes = function(dmak){
+            dmak.eraseLastStrokes(1);
+        }
+
+        $scope.pause = function(dmak){
+            dmak.pause();
+        }
+
+        $scope.render = function(dmak){
+            dmak.render();
+        }
+
+        $scope.renderNextStrokes = function(dmak){
+            dmak.renderNextStrokes(1);
+        }
+
+        $scope.erase = function(dmak){
+            dmak.erase();
+        }
+
+
+
 
         $scope.tabs = [
             { title:'Dynamic Title 1', content:'Dynamic content 1' },
