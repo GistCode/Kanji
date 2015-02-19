@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+    .controller('DashCtrl', function ($scope,ngAudio) {
 
 
         $scope.tabs = [
@@ -23,100 +23,130 @@ angular.module('starter.controllers', [])
         ];
         $scope.tabs.activeTab = 2;
 
-        $scope.startDraw = function(char,elem){
-            console.log(char,elem);
 
-            new Dmak(char,
+
+
+        $scope.clearDraw = function (char, obj) {
+            console.log('aaa');
+            //obj.dmak.erase();
+            //obj.dmak = null;
+            var elem = angular.element(document.querySelector('#draw-'+char));
+            console.log(elem.children());
+            elem.children().remove();
+
+        };
+
+        $scope.startDraw = function (char, obj) {
+            console.log(char, obj);
+
+            obj.dmak = new Dmak(char,
 
                 {
                     uri: "css/svg/",
                     'autoplay': true,
-                    'height':300,
-                    'width':300,
+                    'height': 300,
+                    'width': 300,
                     'grid': {
-                        'show': true
+                        'show': false
                     },
                     'stroke': {
-                        'attr':{
-                            'stroke-linecap':"square"
+                        'attr': {
+                            'stroke-linecap': "square",
+                            'stroke-linejoin':"miter"
                         },
                         'order': {
                             'visible': true,
-                            'attr':{
-                                'font-size':14,
+                            'attr': {
+                                'font-size': 14,
 
                             }
                         }
                     },
-                    'element': "draw-"+char
+                    'element': "draw-" + char
 
                 }
             );
 
+            console.log(obj.dmak);
 
 
-        }
+        };
+
+        $scope.kanjis = [
+            {
+                "kanji": "タ",
+                "ruby": "ruby",
+                "meaning": "ruby",
+                "draw": "draw-" + "タ",
+                "container":{}
+
+            }, {
+                "kanji": "カ",
+                "ruby": "ruby",
+                "meaning": "ruby",
+                "draw": "draw-" + "カ",
+                "container":{}
+            }
+        ]
+        ;
+
+//$scope.dmak = $scope.startDraw();
 
 
-
-        //$scope.dmak = $scope.startDraw();
-
-        $scope.clear = function(dmak){
-
-            console.log(dmak);
-            dmak.erase();
-        }
-
-        $scope.eraseLastStrokes = function(dmak){
+        $scope.eraseLastStrokes = function (dmak) {
+            dmak.pause();
             dmak.eraseLastStrokes(1);
         }
 
-        $scope.pause = function(dmak){
+        $scope.pause = function (dmak) {
             dmak.pause();
         }
 
-        $scope.render = function(dmak){
+        $scope.render = function (dmak) {
+
             dmak.render();
         }
 
-        $scope.renderNextStrokes = function(dmak){
+        $scope.renderNextStrokes = function (dmak) {
+            dmak.pause();
             dmak.renderNextStrokes(1);
         }
 
-        $scope.erase = function(dmak){
+        $scope.erase = function (dmak) {
+            dmak.pause();
+            dmak.step = 4;
             dmak.erase();
         }
 
 
-
-
         $scope.tabs = [
-            { title:'Dynamic Title 1', content:'Dynamic content 1' },
-            { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+            {title: 'Dynamic Title 1', content: 'Dynamic content 1'},
+            {title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true}
         ];
     })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
+    .
+    controller('ChatsCtrl', function ($scope, Chats) {
+        $scope.chats = Chats.all();
+        $scope.remove = function (chat) {
+            Chats.remove(chat);
+        }
+    })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+    .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
+        $scope.chat = Chats.get($stateParams.chatId);
+    })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
-})
+    .controller('FriendsCtrl', function ($scope, Friends) {
+        $scope.friends = Friends.all();
+    })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-})
+    .controller('FriendDetailCtrl', function ($scope, $stateParams, Friends) {
+        $scope.friend = Friends.get($stateParams.friendId);
+    })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+    .controller('AccountCtrl', function ($scope) {
+        $scope.settings = {
+            enableFriends: true
+        };
+    });

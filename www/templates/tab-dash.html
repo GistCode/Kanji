@@ -1,15 +1,15 @@
 <ion-view view-title="Dashboard">
     <ion-content class="padding">
 
-        <div class="list card">
+        <div class="list card" ng-repeat="kanji in kanjis">
             <div class="item item-icon-left">
-                <i class="icon">タ</i>
+                <i class="icon">{{kanji.kanji}}</i>
 
-                <h2>Ruby</h2>
+                <h2>{{kanji.ruby}}</h2>
 
-                <p>Meaning</p>
+                <p>{{kanji.meaning}}</p>
             </div>
-
+            <audio src="http://translate.google.com/translate_tts?tl=ja&q=漢字" rel="noreferrer" controls=""></audio>
             <tabset class="card-control">
 
                 <tab>
@@ -17,28 +17,32 @@
                         <i class="text-center positive icon ion-android-note"></i>
                     </tab-heading>
                     <h1 class="card-text">
-                        タ
+                        {{kanji.kanji}}
                     </h1>
+                    <i class="play-btn ion-volume-medium"></i>
+
+
+
                 </tab>
 
-                <tab select="startDraw('タ',this)">
+                <tab select="startDraw(kanji.kanji,kanji)" deselect="clearDraw(kanji.kanji,kanji)">
                     <tab-heading>
 
                         <i class="text-center assertive icon  ion-android-note"></i>
                     </tab-heading>
 
-                    <div class="item item-image">
-                        <div id="draw-タ" ></div>
+                    <div class="item-image">
+                        <div class="card-draw" id="{{kanji.draw}}" ng-model="kanji.container"></div>
 
                     </div>
 
                     <a class="item" href="#">
                         <div class="button-bar">
-                            <button class="button button-large button-icon ion-chevron-left" ng-click="eraseLastStrokes(dmak)"></button>
-                            <button class="button button-large  button-icon ion-pause" ng-click="pause(dmak)"></button>
-                            <button  class="button  button-large button-icon ion-play" ng-click="render(dmak)"></button>
-                            <button  class="button  button-large button-icon ion-ios-fastforward" ng-click="renderNextStrokes(dmak)"></button>
-                            <button  class="button  button-large button-icon ion-close" ng-click="erase(dmak)"></button>
+                            <button class="button button-large button-icon ion-ios-rewind" ng-click="eraseLastStrokes(kanji.dmak)"></button>
+                            <button class="button button-large  button-icon ion-pause" ng-click="pause(kanji.dmak)"></button>
+                            <button  class="button  button-large button-icon ion-play" ng-click="render(kanji.dmak)"></button>
+                            <button  class="button  button-large button-icon ion-ios-fastforward" ng-click="renderNextStrokes(kanji.dmak)"></button>
+                            <button  class="button  button-large button-icon ion-close" ng-click="erase(kanji.dmak)"></button>
                         </div>
 
 
@@ -50,54 +54,54 @@
 
         </div>
 
-        <div class="list card">
-            <div class="item item-icon-left">
-                <i class="icon">カ</i>
+        <!--<div class="list card">-->
+            <!--<div class="item item-icon-left">-->
+                <!--<i class="icon">カ</i>-->
 
-                <h2>Ruby</h2>
+                <!--<h2>Ruby</h2>-->
 
-                <p>Meaning</p>
-            </div>
+                <!--<p>Meaning</p>-->
+            <!--</div>-->
 
-            <tabset class="card-control">
+            <!--<tabset class="card-control">-->
 
-                <tab>
-                    <tab-heading>
-                        <i class="text-center positive icon ion-android-note"></i>
-                    </tab-heading>
-                    <h1 class="card-text">
-                        カ
-                    </h1>
-                </tab>
+                <!--<tab>-->
+                    <!--<tab-heading>-->
+                        <!--<i class="text-center positive icon ion-android-note"></i>-->
+                    <!--</tab-heading>-->
+                    <!--<h1 class="card-text">-->
+                        <!--カ-->
+                    <!--</h1>-->
+                <!--</tab>-->
 
-                <tab select="startDraw('カ',this)">
-                    <tab-heading>
+                <!--<tab select="startDraw('カ',this)">-->
+                    <!--<tab-heading>-->
 
-                        <i class="text-center assertive icon  ion-android-note"></i>
-                    </tab-heading>
+                        <!--<i class="text-center assertive icon  ion-android-note"></i>-->
+                    <!--</tab-heading>-->
 
-                    <div class="item item-image">
-                        <div id="draw-カ"></div>
+                    <!--<div class="item item-image">-->
+                        <!--<div id="draw-カ"></div>-->
 
-                    </div>
+                    <!--</div>-->
 
-                    <a class="item" href="#">
-                        <div class="button-bar">
-                            <button class="button button-large button-icon ion-chevron-left" ng-click="eraseLastStrokes(dmak)"></button>
-                            <button class="button button-large  button-icon ion-pause" ng-click="pause(dmak)"></button>
-                            <button  class="button  button-large button-icon ion-play" ng-click="render(dmak)"></button>
-                            <button  class="button  button-large button-icon ion-ios-fastforward" ng-click="renderNextStrokes(dmak)"></button>
-                            <button  class="button  button-large button-icon ion-close" ng-click="erase(dmak)"></button>
-                        </div>
-
-
-                    </a>
-                </tab>
-
-            </tabset>
+                    <!--<a class="item" href="#">-->
+                        <!--<div class="button-bar">-->
+                            <!--<button class="button button-large button-icon ion-chevron-left" ng-click="eraseLastStrokes(this.dmak)"></button>-->
+                            <!--<button class="button button-large  button-icon ion-pause" ng-click="pause(this.dmak)"></button>-->
+                            <!--<button  class="button  button-large button-icon ion-play" ng-click="render(this.dmak)"></button>-->
+                            <!--<button  class="button  button-large button-icon ion-ios-fastforward" ng-click="renderNextStrokes(this.dmak)"></button>-->
+                            <!--<button  class="button  button-large button-icon ion-close" ng-click="erase(this.dmak)"></button>-->
+                        <!--</div>-->
 
 
-        </div>
+                    <!--</a>-->
+                <!--</tab>-->
+
+            <!--</tabset>-->
+
+
+        <!--</div>-->
 
 
     </ion-content>

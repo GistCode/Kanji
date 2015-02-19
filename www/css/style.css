@@ -1,11 +1,23 @@
 .card-control > ul{
     z-index: 999;
     position: absolute;
-    top:0px;
+    top:7px;
     right:0px;
     /*margin-top:13px;*/
 
 }
+
+.play-btn{
+    position: absolute;
+    bottom:0.5em;
+    right:0.5em;
+    /*min-height: 5em;*/
+    /*min-width: 5em;*/
+    font-size:3em;
+
+}
+
+
 
 .card-text{
     font-size: 20em;
@@ -15,7 +27,29 @@
 .card-control > ul > li{
     min-width: 64px;
     width: 64px;
+    /*margin-top:10px;*/
 }
+
+.card-draw{
+    min-height: 290px;
+    /*margin-top:6em;*/
+}
+
+.tab-pane.am-fade {
+    animation-duration: .3s;
+    animation-timing-function: ease;
+    animation-fill-mode: backwards;
+    opacity: 1;
+}
+
+.tab-pane.am-fade.active-remove {
+    display: none !important;
+}
+
+.tab-pane.am-fade.active-add {
+    animation-name: fadeIn;
+}
+
 
 .nav {
     margin-bottom: 0;
