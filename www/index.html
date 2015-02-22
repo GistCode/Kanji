@@ -9,6 +9,9 @@
     <link href="css/style.css" rel="stylesheet">
       <link href="lib/ionicons/css/ionicons.css" rel="stylesheet">
       <link href="lib/angular-motion/dist/angular-motion.css" rel="stylesheet">
+
+      <link href="lib/angular-material/angular-material.min.css" rel="stylesheet">
+
       <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">-->
       <!--<link rel="stylesheet" href="//mgcrea.github.io/angular-strap/static/styles/bootstrap-additions.min.css">-->
       <!--<link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libraries.min.css">-->
@@ -28,12 +31,20 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
+      <script src="modules/character-learn/characterLearnCtrl.js"></script>
+      <script src="modules/character-list/characterListCtrl.js"></script>
+      <script src="modules/shared/characterFactory.js"></script>
+
+    <!--<script src="js/controllers.js"></script>-->
+    <!--<script src="js/services.js"></script>-->
       <script src="dmak/src/raphael.js"></script>
       <script src="dmak/dist/dmak.js"></script>
       <script src="js/ui-bootstrap-custom-0.12.0.js"></script>
       <script src="js/ui-bootstrap-custom-tpls-0.12.0.js"></script>
+
+      <script src="lib/angular-aria/angular-aria.min.js"></script>
+      <script src="lib/angular-material/angular-material.min.js"></script>
+
 
       <!--<script src="lib/angular-strap/dist/angular-strap.js"></script>-->
       <!--<script src="lib/angular-strap/dist/angular-strap.tpl.js"></script>-->
@@ -41,7 +52,7 @@
 
 
   </head>
-  <body ng-app="starter">
+  <body ng-app="characters">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->

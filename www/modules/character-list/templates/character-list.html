@@ -1,0 +1,23 @@
+<ion-view view-title="Chats">
+    <ion-content>
+        <!--<ul class="characters-table">-->
+        <!--<li> あ </li>-->
+        <!--<li>い</li>-->
+        <!--</ul>-->
+        <md-grid-list md-cols="3" md-row-height="1:1" md-gutter="4px">
+
+            <md-grid-tile  ng-repeat="tile in grid" md-rowspan="{{tile.rowspwan}}" md-colspan="{{tile.colspan}}">
+                <md-button ng-disabled="tile.char.title"  class="home-buttons" ng-click="aaa();">
+                    <ruby ng-hide="tile.char.title">    {{tile.char.phonetic}}</ruby>
+                    <span ng-class="{'vowels':$first}" class="{{tile.class}}">{{tile.char.character}}</span>
+                </md-button>
+
+            </md-grid-tile>
+
+
+
+
+        </md-grid-list>
+
+    </ion-content>
+</ion-view>
